@@ -1,7 +1,33 @@
-import '../styles/globals.css'
+import Layout from '../components/Layout';
+import { createGlobalStyle } from 'styled-components';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const GlobalStyle = createGlobalStyle`
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Fira Code', monospace;
 }
 
-export default MyApp
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+`;
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <GlobalStyle />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
+  );
+}
+
+export default MyApp;
